@@ -6,9 +6,13 @@ import search_icon_dark from '../../assets/search-b.png';
 import toggle_icon_light from '../../assets/day.png';
 import toggle_icon_dark from '../../assets/night.png';
 
-const Navbar = ({ username = 'User', theme, setTheme }) => {
+const Navbar = ({ username = 'User', theme, setTheme, searchQuery, setSearchQuery }) => {
   const toggle_mode = () => {
     setTheme(theme === 'light' ? 'dark' : 'light');
+  };
+
+  const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value);
   };
 
   return (
@@ -21,7 +25,12 @@ const Navbar = ({ username = 'User', theme, setTheme }) => {
         </ul>
 
         <div className="search-box">
-          <input type="text" placeholder="Search" />
+          <input
+            type="text"
+            placeholder="Search"
+            value={searchQuery}
+            onChange={handleSearchChange}
+          />
           <img src={theme === 'light' ? search_icon_light : search_icon_dark} alt="Search Icon" />
         </div>
 
@@ -38,3 +47,4 @@ const Navbar = ({ username = 'User', theme, setTheme }) => {
 };
 
 export default Navbar;
+

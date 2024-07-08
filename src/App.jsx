@@ -7,12 +7,19 @@ import Login from './pages/Login';
 
 const App = () => {
   const [theme, setTheme] = useState('light');
+  const [searchQuery, setSearchQuery] = useState('');
 
   return (
     <Router>
-      <Navbar theme={theme} setTheme={setTheme} username="" /> 
+      <Navbar
+        username="User"
+        theme={theme}
+        setTheme={setTheme}
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+      />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home searchQuery={searchQuery} />} />
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
       </Routes>
@@ -21,4 +28,3 @@ const App = () => {
 };
 
 export default App;
-
